@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.ts","./src/components/addstudentmodal.tsx","./src/components/header.tsx","./src/components/overviewpage.tsx","./src/components/sidebar.tsx","./src/components/studentspage.tsx","./src/data/mockdata.ts"],"version":"5.6.3"}
