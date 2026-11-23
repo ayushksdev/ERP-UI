@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   CalendarCheck,
-  Users,
   UserCheck,
   UserX,
   Search,
@@ -13,7 +12,6 @@ import {
   ChevronDown,
   Check,
   Clock,
-  Sparkles,
 } from 'lucide-react';
 import { AttendanceRecord } from '../types';
 import { initialAttendance } from '../data/mockData';
@@ -23,7 +21,7 @@ export const AttendancePage: React.FC = () => {
   const [searchFilter, setSearchFilter] = useState('');
   const [selectedDept, setSelectedDept] = useState('All Departments');
   const [selectedStatus, setSelectedStatus] = useState('All Statuses');
-  const [selectedDate, setSelectedDate] = useState('23 Nov 2026');
+  const selectedDate = '23 Nov 2026';
   const [currentPage, setCurrentPage] = useState(1);
 
   const [showDeptDropdown, setShowDeptDropdown] = useState(false);

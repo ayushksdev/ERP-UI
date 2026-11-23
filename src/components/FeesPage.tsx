@@ -6,14 +6,9 @@ import {
   AlertCircle,
   Search,
   RotateCcw,
-  MoreHorizontal,
-  ChevronLeft,
-  ChevronRight,
   ChevronDown,
   Plus,
-  Trash2,
   X,
-  FileSpreadsheet,
   Download,
 } from 'lucide-react';
 import { FeeTransaction } from '../types';
@@ -24,8 +19,6 @@ export const FeesPage: React.FC = () => {
   const [searchFilter, setSearchFilter] = useState('');
   const [selectedFeeType, setSelectedFeeType] = useState('All Fee Types');
   const [selectedStatus, setSelectedStatus] = useState('All Statuses');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [activeActionMenu, setActiveActionMenu] = useState<number | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const [showTypeDropdown, setShowTypeDropdown] = useState(false);
@@ -55,7 +48,6 @@ export const FeesPage: React.FC = () => {
     setSearchFilter('');
     setSelectedFeeType('All Fee Types');
     setSelectedStatus('All Statuses');
-    setCurrentPage(1);
   };
 
   const handleCollectFee = (e: React.FormEvent) => {

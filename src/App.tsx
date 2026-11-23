@@ -3,6 +3,17 @@ import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { OverviewPage } from './components/OverviewPage';
 import { StudentsPage } from './components/StudentsPage';
+import { FacultyPage } from './components/FacultyPage';
+import { AdmissionsPage } from './components/AdmissionsPage';
+import { AcademicsPage } from './components/AcademicsPage';
+import { AttendancePage } from './components/AttendancePage';
+import { FeesPage } from './components/FeesPage';
+import { ExamsPage } from './components/ExamsPage';
+import { LibraryPage } from './components/LibraryPage';
+import { HostelPage } from './components/HostelPage';
+import { TransportPage } from './components/TransportPage';
+import { ReportsPage } from './components/ReportsPage';
+import { SettingsPage } from './components/SettingsPage';
 import { initialStudents } from './data/mockData';
 import { ActivePage, Student } from './types';
 
@@ -81,36 +92,31 @@ export const App: React.FC = () => {
             />
           )}
 
-          {activePage !== 'overview' && activePage !== 'students' && (
-            <div className="p-8 max-w-4xl mx-auto text-center py-24">
-              <div className="w-16 h-16 rounded-2xl bg-[#ede9fe] text-[#4f39f6] flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <span className="text-2xl font-bold uppercase">{activePage.slice(0, 2)}</span>
-              </div>
-              <h2 className="text-xl font-bold text-slate-800 capitalize">
-                {activePage} Module
-              </h2>
-              <p className="text-slate-500 text-sm mt-1 max-w-md mx-auto">
-                The {activePage} section is configured in the ERP system. Switch back to Campus Overview or Students directory to view full Figma replica screens.
-              </p>
-              <div className="mt-6 flex justify-center gap-3">
-                <button
-                  onClick={() => setActivePage('overview')}
-                  className="px-4 py-2 bg-[#4f39f6] text-white rounded-xl text-xs font-semibold shadow-md hover:bg-[#4338ca] transition-all"
-                >
-                  Go to Overview
-                </button>
-                <button
-                  onClick={() => setActivePage('students')}
-                  className="px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-xl text-xs font-semibold hover:bg-slate-50 transition-all"
-                >
-                  Go to Students
-                </button>
-              </div>
-            </div>
-          )}
+          {activePage === 'faculty' && <FacultyPage />}
+
+          {activePage === 'admissions' && <AdmissionsPage />}
+
+          {activePage === 'academics' && <AcademicsPage />}
+
+          {activePage === 'attendance' && <AttendancePage />}
+
+          {activePage === 'fees' && <FeesPage />}
+
+          {activePage === 'exams' && <ExamsPage />}
+
+          {activePage === 'library' && <LibraryPage />}
+
+          {activePage === 'hostel' && <HostelPage />}
+
+          {activePage === 'transport' && <TransportPage />}
+
+          {activePage === 'reports' && <ReportsPage />}
+
+          {activePage === 'settings' && <SettingsPage />}
         </main>
       </div>
     </div>
   );
 };
+
 export default App;

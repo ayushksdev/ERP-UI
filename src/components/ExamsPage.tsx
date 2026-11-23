@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import {
   FileSpreadsheet,
-  Calendar,
   Clock,
   MapPin,
   CheckCircle2,
   Search,
   Building,
   RotateCcw,
-  MoreHorizontal,
-  ChevronLeft,
-  ChevronRight,
   ChevronDown,
   Plus,
   Trash2,
@@ -24,8 +20,6 @@ export const ExamsPage: React.FC = () => {
   const [searchFilter, setSearchFilter] = useState('');
   const [selectedDept, setSelectedDept] = useState('All Departments');
   const [selectedStatus, setSelectedStatus] = useState('All Statuses');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [activeActionMenu, setActiveActionMenu] = useState<number | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const [showDeptDropdown, setShowDeptDropdown] = useState(false);
@@ -57,7 +51,6 @@ export const ExamsPage: React.FC = () => {
     setSearchFilter('');
     setSelectedDept('All Departments');
     setSelectedStatus('All Statuses');
-    setCurrentPage(1);
   };
 
   const handleScheduleExam = (e: React.FormEvent) => {
@@ -228,6 +221,39 @@ export const ExamsPage: React.FC = () => {
             )}
           </div>
 
+          <div className="relative">
+            <button
+              onClick={() => {
+                setShowStatusDropdown(!showStatusDropdown);
+                setShowDeptDropdown(false);
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg text-[11.5px] font-medium text-slate-700 transition-colors shadow-sm"
+            >
+              <span>{selectedStatus}</span>
+              <ChevronDown size={12} className="text-slate-400 ml-0.5" />
+            </button>
+            {showStatusDropdown && (
+              <div className="absolute left-0 mt-1 w-40 bg-white rounded-xl shadow-xl border border-slate-200 py-1 z-30 animate-pop">
+                {statuses.map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => {
+                      setSelectedStatus(s);
+                      setShowStatusDropdown(false);
+                    }}
+                    className={`w-full px-3 py-1.5 text-left text-[11.5px] ${
+                      selectedStatus === s
+                        ? 'bg-[#f5f3ff] text-[#4f39f6] font-semibold'
+                        : 'text-slate-700 hover:bg-slate-50'
+                    }`}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <button
             onClick={handleReset}
             className="flex items-center gap-1 px-2.5 py-1.5 bg-white hover:bg-[#f5f3ff] border border-[#d8d2fb] text-[#4f39f6] rounded-lg text-[11.5px] font-semibold transition-colors shadow-sm"
@@ -315,6 +341,35 @@ export const ExamsPage: React.FC = () => {
               </button>
             </div>
             <form onSubmit={handleScheduleExam} className="p-5 space-y-3.5">
+              <div className="grid grid-cols-3 gap-2">
+                <div>
+                  <label className="block text-[11.5px] font-semibold text-slate-700 mb-1">Semester</label>
+                  <input
+                    type="text"
+                    value={semester}
+                    onChange={(e) => setSemester(e.target.value)}
+                    className="w-full px-3 py-1.5 text-[12.5px] rounded-lg border border-slate-200 focus:border-[#4f39f6] focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11.5px] font-semibold text-slate-700 mb-1">Time</label>
+                  <input
+                    type="text"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                    className="w-full px-3 py-1.5 text-[12.5px] rounded-lg border border-slate-200 focus:border-[#4f39f6] focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11.5px] font-semibold text-slate-700 mb-1">Seats</label>
+                  <input
+                    type="text"
+                    value={totalStudents}
+                    onChange={(e) => setTotalStudents(e.target.value)}
+                    className="w-full px-3 py-1.5 text-[12.5px] rounded-lg border border-slate-200 focus:border-[#4f39f6] focus:outline-none"
+                  />
+                </div>
+              </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-[11.5px] font-semibold text-slate-700 mb-1">Exam Code</label>
@@ -352,6 +407,35 @@ export const ExamsPage: React.FC = () => {
                   className="w-full px-3 py-1.5 text-[12.5px] rounded-lg border border-slate-200 focus:border-[#4f39f6] focus:outline-none"
                   required
                 />
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <div>
+                  <label className="block text-[11.5px] font-semibold text-slate-700 mb-1">Semester</label>
+                  <input
+                    type="text"
+                    value={semester}
+                    onChange={(e) => setSemester(e.target.value)}
+                    className="w-full px-3 py-1.5 text-[12.5px] rounded-lg border border-slate-200 focus:border-[#4f39f6] focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11.5px] font-semibold text-slate-700 mb-1">Time</label>
+                  <input
+                    type="text"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                    className="w-full px-3 py-1.5 text-[12.5px] rounded-lg border border-slate-200 focus:border-[#4f39f6] focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11.5px] font-semibold text-slate-700 mb-1">Seats</label>
+                  <input
+                    type="text"
+                    value={totalStudents}
+                    onChange={(e) => setTotalStudents(e.target.value)}
+                    className="w-full px-3 py-1.5 text-[12.5px] rounded-lg border border-slate-200 focus:border-[#4f39f6] focus:outline-none"
+                  />
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>

@@ -163,16 +163,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Bottom Sidebar Image Card */}
-        <div className="relative mt-auto w-full overflow-hidden select-none pointer-events-none">
-          <div className="w-full relative h-[140px]">
-            <img
-              src="/assets/sidebar_building.png"
-              alt="Campus Building"
-              className="w-full h-full object-cover object-bottom opacity-90 mix-blend-screen"
-            />
-            {/* Smooth gradient blend into the background */}
-            <div className="absolute inset-0 bg-gradient-to-t from-transparent via-[#1a1443]/40 to-[#141033]" />
-          </div>
+        <div className="mt-auto w-full shrink-0 select-none pointer-events-none overflow-hidden">
+          <img
+            src="/assets/sidebar_building.png"
+            alt="Campus Building"
+            className="w-full h-auto object-cover object-bottom block"
+          />
         </div>
       </aside>
     </>

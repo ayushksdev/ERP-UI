@@ -119,7 +119,7 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigateToStudents
         </div>
 
         {/* Right: College Building Banner (AIMT College of Engineering) */}
-        <div className="w-full md:max-w-[550px] h-[95px] sm:h-[105px] rounded-2xl overflow-hidden relative border border-slate-200/70 shadow-sm shrink-0">
+        <div className="flex-1 h-[120px] rounded-2xl overflow-hidden relative border border-slate-200/70 shadow-sm min-w-[280px]">
           <img
             src="/assets/hero_banner.png"
             alt="AIMT College of Engineering"
@@ -508,14 +508,14 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigateToStudents
       {/* Bottom Row: Recent Admissions & Promo Card (8 cols + 4 cols = 12 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch">
         {/* Recent Admissions Table (8 cols) */}
-        <div className="lg:col-span-8 bg-white rounded-2xl p-4 border border-slate-200/70 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col justify-between">
+        <div className="lg:col-span-8 bg-white rounded-2xl p-3.5 border border-slate-200/70 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col justify-between h-[199px]">
           <div>
-            <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+            <div className="flex items-center justify-between pb-1.5 border-b border-slate-100">
               <div className="flex items-center gap-2">
                 <div className="text-[#4f39f6]">
-                  <FileText size={16} />
+                  <FileText size={15} />
                 </div>
-                <h3 className="text-[13.5px] font-bold text-[#0f172a]">Recent Admissions</h3>
+                <h3 className="text-[13px] font-bold text-[#0f172a]">Recent Admissions</h3>
               </div>
               <button
                 onClick={onNavigateToStudents}
@@ -527,29 +527,29 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigateToStudents
             </div>
 
             {/* Table */}
-            <div className="overflow-x-auto mt-1">
+            <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-slate-100 text-[10.5px] font-bold text-slate-400">
-                    <th className="py-1.5 px-2.5">#</th>
-                    <th className="py-1.5 px-2.5">Student Name</th>
-                    <th className="py-1.5 px-2.5">Program</th>
-                    <th className="py-1.5 px-2.5">Application ID</th>
-                    <th className="py-1.5 px-2.5">Applied On</th>
-                    <th className="py-1.5 px-2.5">Status</th>
-                    <th className="py-1.5 px-2.5 text-right"></th>
+                  <tr className="bg-[#f5f3ff] text-[10.5px] font-bold text-slate-500 border-b border-slate-100">
+                    <th className="py-1 px-2">#</th>
+                    <th className="py-1 px-2">Student Name</th>
+                    <th className="py-1 px-2">Program</th>
+                    <th className="py-1 px-2">Application ID</th>
+                    <th className="py-1 px-2">Applied On</th>
+                    <th className="py-1 px-2">Status</th>
+                    <th className="py-1 px-2 text-right"></th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100/80 text-[11.5px]">
+                <tbody className="divide-y divide-slate-100/80 text-[11px]">
                   {recentAdmissions.map((adm, index) => (
                     <tr key={adm.id} className="hover:bg-slate-50/70 transition-colors group">
-                      <td className="py-1.5 px-2.5 text-slate-400 font-medium">{index + 1}</td>
-                      <td className="py-1.5 px-2.5">
+                      <td className="py-1 px-2 text-slate-400 font-medium">{index + 1}</td>
+                      <td className="py-1 px-2">
                         <div className="flex items-center gap-2">
                           <img
                             src={adm.avatar}
                             alt={adm.name}
-                            className="w-5.5 h-5.5 rounded-full object-cover border border-slate-200 shrink-0"
+                            className="w-5 h-5 rounded-full object-cover border border-slate-200 shrink-0"
                             onError={(e) => {
                               (e.target as HTMLElement).style.display = 'none';
                             }}
@@ -557,32 +557,32 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigateToStudents
                           <span className="font-bold text-slate-800">{adm.name}</span>
                         </div>
                       </td>
-                      <td className="py-1.5 px-2.5 text-slate-600 font-medium">{adm.program}</td>
-                      <td className="py-1.5 px-2.5 text-slate-500 font-mono text-[10.5px]">{adm.applicationId}</td>
-                      <td className="py-1.5 px-2.5 text-slate-500">{adm.appliedOn}</td>
-                      <td className="py-1.5 px-2.5">
+                      <td className="py-1 px-2 text-slate-600 font-medium">{adm.program}</td>
+                      <td className="py-1 px-2 text-slate-500 font-mono text-[10px]">{adm.applicationId}</td>
+                      <td className="py-1 px-2 text-slate-500 text-[10.5px]">{adm.appliedOn}</td>
+                      <td className="py-1 px-2">
                         {adm.status === 'Admitted' && (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#ecfdf5] text-[#059669]">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-[#ecfdf5] text-[#059669]">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
                             Admitted
                           </span>
                         )}
                         {adm.status === 'Documents Pending' && (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#fffbeb] text-[#d97706]">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-[#fffbeb] text-[#d97706]">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]" />
                             Documents Pending
                           </span>
                         )}
                         {adm.status === 'Under Review' && (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#eff6ff] text-[#2563eb]">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-[#eff6ff] text-[#2563eb]">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#3b82f6]" />
                             Under Review
                           </span>
                         )}
                       </td>
-                      <td className="py-1.5 px-2.5 text-right">
-                        <button className="p-1 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors">
-                          <MoreHorizontal size={13} />
+                      <td className="py-1 px-2 text-right">
+                        <button className="p-0.5 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors">
+                          <MoreHorizontal size={12} />
                         </button>
                       </td>
                     </tr>
@@ -596,12 +596,12 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigateToStudents
         {/* Promo / Management Card (4 cols) */}
         <div
           onClick={onNavigateToStudents}
-          className="lg:col-span-4 rounded-2xl overflow-hidden relative shadow-md border border-slate-200/80 group select-none cursor-pointer hover:shadow-lg transition-all min-h-[175px] flex items-center justify-center bg-[#100d2b]"
+          className="lg:col-span-4 rounded-2xl overflow-hidden relative shadow-md border border-slate-200/80 group select-none cursor-pointer hover:shadow-lg transition-all h-[199px] flex items-center justify-center bg-[#100d2b]"
         >
           <img
             src="/assets/promo_card.png"
             alt="One Campus, Complete Management - Explore Modules"
-            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+            className="w-full h-full object-fill group-hover:scale-[1.01] transition-transform duration-300 rounded-2xl"
           />
         </div>
       </div>
